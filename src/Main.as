@@ -36,16 +36,20 @@ void SetVolumeBasedOnMapMusic(CGameCtnChallenge@ map) {
 bool S_Enabled = true;
 
 [Setting hidden]
-float S_MusicVolWithCustomMusic = -10;
+float S_MusicVolWithCustomMusic = -0;
 
 [Setting hidden]
 float S_MusicVolWithoutCustomMusic = -40;
 
 [SettingsTab name="Music Volume"]
 void R_S_MusicVolume() {
-    UI::Checkbox("Enabled Auto-setting music volume when a map has custom music", S_Enabled);
+    S_Enabled = UI::Checkbox("Enabled Auto-setting music volume when a map has custom music", S_Enabled);
+    UI::AlignTextToFramePadding();
+    UI::TextWrapped("\\$iNote: custom music (for whatever reason) typically plays at a lower volume than normal in-game music, so you might like to set the volume a bit higher than you would normally.");
+    UI::PushItemWidth(UI::GetWindowContentRegionWidth() * 0.4f);
     auto newWithCustMusic = UI::SliderFloat("Music Volume - Map with Custom Music", S_MusicVolWithCustomMusic, -40, 0, "%.1f");
     auto newWithoutCustMusic = UI::SliderFloat("Music Volume - not in Map or No Custom Music", S_MusicVolWithoutCustomMusic, -40, 0, "%.1f");
+    UI::PopItemWidth();
 
     if (newWithCustMusic != S_MusicVolWithCustomMusic || newWithoutCustMusic != S_MusicVolWithoutCustomMusic) {
         // will update
