@@ -16,6 +16,7 @@ void Main() {
             }
         } else {
             if (g_MapMwIdValue != app.RootMap.Id.Value) {
+                if (app.RootMap.CustomMusicPackDesc !is null && app.RootMap.CustomMusic is null) continue;
                 g_MapMwIdValue = app.RootMap.Id.Value;
                 SetVolumeBasedOnMapMusic(app.RootMap);
             }
