@@ -1,0 +1,9 @@
+[meta]
+name     = "Music Auto-toggler"
+author   = "XertroV"
+category = "Utilities"
+version  = "0.2.0"
+
+[script]
+#__DEFINES__
+# dependencies = ["MLHook", "MLFeedRaceData"]
